@@ -1,0 +1,51 @@
+.cent{
+    border:1px solid grey;
+    background-color: lightblue;
+}
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+h5{
+    text-align: center;
+}
+.cnt{
+    border:1px solid grey;
+    padding:5px 5px;
+    margin-top: 10px;
+}
+.c{
+    border:2px solid black;
+}
+.t{
+    border:1px solid grey;
+    padding:8px;
+    margin-top:10px ;
+}
+#t{
+    color:red;
+}
+table{
+    border:1px solid black;
+    border-collapse: collapse;
+    width:50%;
+    margin-top:20px;
+}
+tr{
+    border:1px solid grey;
+}
+th{
+    border:1px solid gray;
+}
+#first{
+    border:1px solid gray;
+    margin-top:1px;
+    padding:5px 8px;
+}
+td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
