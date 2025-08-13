@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: rgb(30, 125, 38);
+        }
+        .title{
+            text-align: center;
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: black;
+            color: aliceblue;
+            border: 50px;
+            border-radius: 40px;
+        }
+        
+        #upload{
+            margin: 150px;
+            margin-top: 50px;
+            padding: 20px 20px 20px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .footer{
+            text-align: center;
+            color: beige;
+            font-weight: 500;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "title">Movies</h1>
+    <div id = "upload"></div>
+    <footer class = "footer">by R V BHUVAN</footer>
+<script>
+    let img = document.getElementById("upload");
+    for(let i =5; i<15; i++){
+            let Image = document.createElement("img");
+         Image.src = `https://via.assets.so/movie.png?id=${i}&q=95&w=360&h=360&fit=fill`;
+        img.appendChild( Image);
+    }
+
+</script>
+</body>
+</html>
