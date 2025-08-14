@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Table</title>
+  <style>
+    h2 {
+        text-align: center;
+        background-color: rgb(73, 82, 244);
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 10px;
+        color: white;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      transition: background-color 0.3s ease;
+    }
+    span {
+        font-size: xx-large;
+        font-weight: 600;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    table {
+      border: 1px solid #ddd;
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background-color: aliceblue;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:hover {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Management Assessment</h2>
+  <br>
+  <span style="margin-left: 20px;">Actions</span><br>
+  <span>_________________________________________</span><br>
+    <br>
+  <div>
+    <button id="bgToggleBtn">Toggle Background</button>
+    <button id="tableToggleBtn">Hide/Show Table</button>
+    <button id="filterBtn">Show Age > 20</button>
+    <button id="sortBtn">Sort by Name</button>
+    <button id="resetBtn">Reset Table</button>
+  </div>
+  <br>
+  <span id="span"></span>
+  <br>
+  <span style="margin-left: 20px;">Student List</span> <br>
+  <span>_________________________________________</span><br>
+    <br>
+  <div id="tableContainer"></div>
+  
+
+  <script>
+    const students = [
+      { name: "Amit Sharma", age: 19, course: "B.Tech" },
+      { name: "Priya Verma", age: 22, course: "MCA" },
+      { name: "Rohit Gupta", age: 20, course: "BCA" },
+      { name: "Neha Singh", age: 23, course: "B.Sc" },
+      { name: "Karan Patel", age: 18, course: "B.Com" }
+    ];
+
+    let lightGray = true;
+
+    function renderTable(data) {
+      const container = document.getElementById("tableContainer");
+      container.innerHTML = "";
+
+      const table = document.createElement("table");
+
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      ["Name", "Age", "Course"].forEach(text => {
+        const th = document.createElement("th");
+        th.innerText = text;
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      data.forEach(student => {
+        const row = document.createElement("tr");
+        Object.values(student).forEach(value => {
+          const td = document.createElement("td");
+          td.innerText = value;
+          row.appendChild(td);
+        });
+        tbody.appendChild(row);
+      });
+      table.appendChild(tbody);
+
+      container.appendChild(table);
+    }
+
+    renderTable(students);
+
+    document.getElementById("bgToggleBtn").addEventListener("click", () => {
+      document.body.style.backgroundColor = lightGray ? "#e0f7fa" : "#f8f9fa";
+      lightGray = !lightGray;
+    });
+
+    document.getElementById("tableToggleBtn").addEventListener("click", () => {
+      const container = document.getElementById("tableContainer");
+      container.style.display = container.style.display === "none" ? "block" : "none";
+    });
+
+    document.getElementById("filterBtn").addEventListener("click", () => {
+      const filtered = students.filter(s => s.age > 20);
+      renderTable(filtered);
+    });
+
+    document.getElementById("sortBtn").addEventListener("click", () => {
+      const sorted = [...students].sort((a, b) => a.name.localeCompare(b.name));
+      renderTable(sorted);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      renderTable(students);
+    });
+  </script>
+</body>
+</html>
